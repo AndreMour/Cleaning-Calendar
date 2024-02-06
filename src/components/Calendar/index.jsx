@@ -1,11 +1,5 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-
-interface DayProps {
-  isToday?: boolean;
-  isSelected?: boolean;
-}
 
 const Frame = styled.div`
   width: 400px;
@@ -32,7 +26,7 @@ const Body = styled.div`
   flex-wrap: wrap;
 `;
 
-const Day = styled.div<DayProps>`
+const Day = styled.div`
   width: 14.2%;
   height: 40px;
   display: flex;
@@ -53,7 +47,7 @@ const Day = styled.div<DayProps>`
     `}
 `;
 
-export function Calendar() {
+export default function Calendar() {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -66,23 +60,23 @@ export function Calendar() {
   const [year, setYear] = useState(date.getFullYear());
   const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
 
+  const days = isLeapYear(year) ? DAYS_LEAP : DAYS;
+
+  function getStartDayOfMonth(date) {
+    const startDate = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    return startDate === 0 ? 7 : startDate;
+  }
+
+  function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  }
+
   useEffect(() => {
     setDay(date.getDate());
     setMonth(date.getMonth());
     setYear(date.getFullYear());
     setStartDay(getStartDayOfMonth(date));
   }, [date]);
-
-  function getStartDayOfMonth(date: Date) {
-    const startDate = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-    return startDate === 0 ? 7 : startDate;
-  }
-
-  function isLeapYear(year: number) {
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  }
-
-  const days = isLeapYear(year) ? DAYS_LEAP : DAYS;
 
   return (
     <Frame>

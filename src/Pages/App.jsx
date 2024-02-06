@@ -8,7 +8,7 @@ import { IoAccessibility, IoCloseSharp } from "react-icons/io5";
 import { RxDotFilled } from "react-icons/rx";
 import { IoIosArrowForward } from "react-icons/io";
 import { useEffect } from 'react';
-import { Calendar } from '../components/Calendar/styles';
+import Calendar from '../components/Calendar';
 
 function App() {
     useEffect(() => {
@@ -26,6 +26,10 @@ function App() {
             </ContainerNomeFuncionario>
         )
     }
+
+    // const weekDays = () => {
+    //     return
+    // }
 
     return (
         <Container>
