@@ -7,7 +7,6 @@ export const Container = styled.div`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: red;
 `
 export const Navigation = styled.div`
     height: 100%;
@@ -127,7 +126,8 @@ export const DeleteIcon = styled.img.attrs({})`
 export const CalendarContainer = styled.div`
     width: 70%;
     height: 100%;
-    background-color: lightgray;
+    border-left: 1px solid;
+    border-color: #747474;
 `;
 
 export const HeaderCalendar = styled.header`
@@ -135,6 +135,7 @@ export const HeaderCalendar = styled.header`
     background-color: #B73625;
     align-items: center;
     height: 60px;
+    width: 100%;
 `
 export const TextHeader = styled.h5`
     font-family: 'Montserrat', sans-serif;
@@ -147,16 +148,19 @@ export const TextFoot = styled.h2`
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 28px;
-    padding-left: 20px;
+    padding-left: 75px;
+    padding-top: 30px;
 `
 export const DivFoot = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 `
 export const DivSeg = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    border-top: 2px solid;
+    border-color: #B73625;
 `
 export const DivTer = styled.div`
     width: 174px;
@@ -182,6 +186,7 @@ export const DayWeek = styled.div`
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
+    padding-top: 8px;
     display: flex;
     justify-content: center;
 `
@@ -191,7 +196,7 @@ export const NameWeek = styled.div`
     font-size: 16px;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding-top: 10px;
 `
 export const Names = styled.p`  
 `

@@ -1,37 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-const Frame = styled.div`
-  width: 400px;
-  border: 1px solid lightgrey;
-  box-shadow: 2px 2px 2px #eee;
-`;
-
-const Header = styled.div`
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 10px 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  background-color: #f5f6fa;
-`;
-
-const Button = styled.div`
-  cursor: pointer;
-`;
-
 const Body = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 `;
 
-const Day = styled.div`
-  width: 14.2%;
-  height: 40px;
+const DaysOfTheWeek = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 8vh;
+`;
+
+const DayWeek = styled.div`
+  border: 1px solid;
+  border-color: #747474;
+  border-left: 0;
+  border-bottom: 0;
+  width: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 8px;
+`
+const DaysOfTheMonth = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: calc(100%/7);
+  height: 110px;
+`
+const Day = styled.div`
+  width: 100%;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid;
+  border-color: #747474;
+  border-left: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8px;
   cursor: pointer;
 
   ${(props) =>
@@ -50,7 +63,7 @@ const Day = styled.div`
 export default function Calendar() {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  const DAYS_OF_THE_WEEK = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
   const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
   const today = new Date();
@@ -79,25 +92,20 @@ export default function Calendar() {
   }, [date]);
 
   return (
-    <Frame>
-      <Header>
-        <Button onClick={() => setDate(new Date(year, month - 1, day))}>Prev</Button>
-        <div>
-          {MONTHS[month]} {year}
-        </div>
-        <Button onClick={() => setDate(new Date(year, month + 1, day))}>Next</Button>
-      </Header>
-      <Body>
+    <Body>
+      <DaysOfTheWeek>
         {DAYS_OF_THE_WEEK.map((d) => (
-          <Day key={d}>
+          <DayWeek key={d}>
             <strong>{d}</strong>
-          </Day>
+          </DayWeek>
         ))}
-        {Array(days[month] + (startDay - 1))
-          .fill(null)
-          .map((_, index) => {
-            const d = index - (startDay - 2);
-            return (
+      </DaysOfTheWeek>
+      {Array(days[month] + (startDay - 1))
+        .fill(null)
+        .map((_, index) => {
+          const d = index - (startDay - 2);
+          return (
+            <DaysOfTheMonth>
               <Day
                 key={index}
                 isToday={d === today.getDate()}
@@ -106,9 +114,9 @@ export default function Calendar() {
               >
                 {d > 0 ? d : ''}
               </Day>
-            );
-          })}
-      </Body>
-    </Frame>
+            </DaysOfTheMonth>
+          );
+        })}
+    </Body>
   );
 }
