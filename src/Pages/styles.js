@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const darkTheme = {
+    body: "#171717",
+    text: "#fff",
+    button: "#000000",
+    bodyWeek: "#1B1B1B"
+}
+
+export const lightTheme = {
+    body: "#fff",
+    text: "#000000",
+    colorInput: "#F1F1F1",
+    buttonLight: "#D9D9D9"
+}
+
 export const Container = styled.div`
     display: flex;
     width: 100vw;
@@ -7,34 +21,34 @@ export const Container = styled.div`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: ${(props) => props.theme.body};
 `
 export const Navigation = styled.div`
     height: 100%;
     width: 30%;
-    background-color: white;
+    background-color: ${(props) => props.theme.body};
 `
 export const DivButton = styled.div`
     position: absolute;
-    display: block;
-    width: 60px;
+    display: flex;
+    align-items: center;
     height: 30px;
     border-radius: 100px;
-    background: #D9D9D9;
+    background: ${(props) => props.theme.button};
     transition: 0.5s;
     border: none;
+    padding-right: 15px;
     margin: 24px 0 0 24px;
 `
 export const Indicator = styled.div`
-    position: absolute;
-    top: 1px;
-    left: 0;
-    width: 28px;
-    height: 28px;
+    width: 31px;
+    height: 31px;
     background: #B73625;
     border-radius: 50%;
     transform: scale(0.9);
     box-shadow: 0px 3px 1px 0px #0000000F;
     box-shadow: 0px 4px 4px 0px #00000040;
+    margin-right: 15px;
 `
 export const Title = styled.h2`
     display: flex;
@@ -43,7 +57,7 @@ export const Title = styled.h2`
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: black;
+    color: ${(props) => props.theme.text};
     padding-top: 80px;
 `
 export const DivInput = styled.div`
@@ -51,12 +65,14 @@ export const DivInput = styled.div`
     max-width: 279px;
     padding: 60px;
     padding-top: 40px;
+    margin: 0 auto;
 `
 export const TextLabel = styled.label`
     font-family: 'Monstserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 5px;
+    color: ${(props) => props.theme.text};
 `
 export const Input = styled.input`
     width: 279px;
@@ -65,6 +81,7 @@ export const Input = styled.input`
     border-width: 1px;
     border-style: solid;
     border-color: black;
+    background-color: ${(props) => props.theme.colorInput};
 `
 export const ButtonInput = styled.button`
     display: flex;
@@ -91,6 +108,7 @@ export const TextUl = styled.ul`
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
+    color: ${(props) => props.theme.text};
 `
 export const ButtonList = styled.button`
     display: flex;
@@ -150,10 +168,12 @@ export const TextFoot = styled.h2`
     font-size: 28px;
     padding-left: 75px;
     padding-top: 30px;
+    color: ${(props) => props.theme.text};
 `
 export const DivFoot = styled.div`
     display: flex;
     justify-content: space-evenly;
+    background-color: ${(props) => props.theme.body};
 `
 export const DivSeg = styled.div`
     width: 174px;
@@ -161,26 +181,36 @@ export const DivSeg = styled.div`
     box-shadow: 0px 4px 4px 0px #00000040;
     border-top: 2px solid;
     border-color: #B73625;
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
 `
 export const DivTer = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
 `
 export const DivQua = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
 `
 export const DivQui = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
 `
 export const DivSex = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
 `
 export const DayWeek = styled.div`
     font-family: 'Montserrat', sans-serif;
@@ -189,6 +219,7 @@ export const DayWeek = styled.div`
     padding-top: 8px;
     display: flex;
     justify-content: center;
+    color: ${(props) => props.theme.text};
 `
 export const NameWeek = styled.div`
     font-family: 'Roboto', sans-serif;
@@ -197,6 +228,7 @@ export const NameWeek = styled.div`
     display: flex;
     justify-content: space-evenly;
     padding-top: 10px;
+    color: ${(props) => props.theme.text};
 `
 export const Names = styled.p`  
 `

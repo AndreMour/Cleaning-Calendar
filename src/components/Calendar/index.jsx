@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import { darkTheme, lightTheme } from '../../Pages/styles';
 
 const Body = styled.div`
   width: 100%;
@@ -19,13 +20,16 @@ const DayWeek = styled.div`
   border-color: #747474;
   border-left: 0;
   border-bottom: 0;
+  border-top: 0;
   width: 100%;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 500;
   align-items: flex-end;
   justify-content: flex-start;
   padding: 8px;
+  color: ${(props) => props.theme.text};
 `
 const DaysOfTheMonth = styled.div`
   display: flex;
@@ -46,6 +50,7 @@ const Day = styled.div`
   justify-content: flex-end;
   padding: 8px;
   cursor: pointer;
+  color: ${(props) => props.theme.text};
 
   ${(props) =>
     props.isToday &&
@@ -100,19 +105,19 @@ export default function Calendar() {
           </DayWeek>
         ))}
       </DaysOfTheWeek>
-      {Array(days[month] + (startDay - 1))
+      {Array(Math.ceil((days[month] + startDay - 1) / 7) * 7)
         .fill(null)
         .map((_, index) => {
           const d = index - (startDay - 2);
           return (
-            <DaysOfTheMonth>
+            <DaysOfTheMonth key={index}>
               <Day
                 key={index}
                 isToday={d === today.getDate()}
                 isSelected={d === day}
                 onClick={() => setDate(new Date(year, month, d))}
               >
-                {d > 0 ? d : ''}
+                {d > 0 && d <= days[month] ? d : ''}
               </Day>
             </DaysOfTheMonth>
           );
