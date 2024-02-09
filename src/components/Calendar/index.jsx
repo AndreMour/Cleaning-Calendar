@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import { darkTheme, lightTheme } from '../../Pages/styles';
+import { Header, darkTheme, lightTheme } from '../../Pages/styles';
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+
+const Button = styled.div`
+  cursor: pointer;
+`;
 
 const Body = styled.div`
   width: 100%;
@@ -17,10 +22,9 @@ const DaysOfTheWeek = styled.div`
 
 const DayWeek = styled.div`
   border: 1px solid;
-  border-color: #747474;
+  border-bottom: 1px solid;
   border-left: 0;
-  border-bottom: 0;
-  border-top: 0;
+  border-color: #747474;
   width: 100%;
   display: flex;
   font-family: 'Montserrat', sans-serif;
@@ -43,9 +47,8 @@ const Day = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
-  border: 1px solid;
-  border-color: #747474;
-  border-left: 0;
+  border-bottom: 1px solid #747474;
+  border-right: 1px solid #747474;
   align-items: flex-end;
   justify-content: flex-end;
   padding: 8px;
@@ -55,13 +58,7 @@ const Day = styled.div`
   ${(props) =>
     props.isToday &&
     css`
-      border: 1px solid #eee;
-    `}
-
-  ${(props) =>
-    props.isSelected &&
-    css`
-      background-color: #eee;
+      border: 1px solid #B73625;
     `}
 `;
 
@@ -69,7 +66,7 @@ export default function Calendar() {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
-  const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
   const today = new Date();
   const [date, setDate] = useState(today);
@@ -81,7 +78,7 @@ export default function Calendar() {
   const days = isLeapYear(year) ? DAYS_LEAP : DAYS;
 
   function getStartDayOfMonth(date) {
-    const startDate = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    const startDate = new Date(date.getFullYear(), date.getMonth(), 2).getDay();
     return startDate === 0 ? 7 : startDate;
   }
 
@@ -98,6 +95,13 @@ export default function Calendar() {
 
   return (
     <Body>
+      <Header>
+        <IoIosArrowBack onClick={() => setDate(new Date(year, month - 1,))} />
+        <div>
+          {MONTHS[month]} {year}
+        </div>
+        <IoIosArrowForward color="white" onClick={() => setDate(new Date(year, month + 1,))} />
+      </Header>
       <DaysOfTheWeek>
         {DAYS_OF_THE_WEEK.map((d) => (
           <DayWeek key={d}>

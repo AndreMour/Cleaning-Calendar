@@ -3,15 +3,17 @@ import {
     TextLabel, Input, ButtonInput, TextUl, ButtonList, DivList, TextLi, UlList, DeleteIcon,
     HeaderCalendar, TextHeader, ContainerNomeFuncionario, NomeFuncionario, CalendarContainer,
     TextFoot, DivFoot, DivSeg, DivTer, DivQua, DivQui, DivSex, DayWeek, NameWeek, Names, darkTheme,
-    lightTheme
+    lightTheme,
+    Header
 } from './styles';
-import Switch from '../components/Switch';
+import Switch from '../components/DarkMode/Switch';
 import { IoAccessibility, IoCloseSharp } from "react-icons/io5";
 import { RxDotFilled } from "react-icons/rx";
-import { IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from 'react';
 import Calendar from '../components/Calendar';
 import { ThemeProvider } from 'styled-components';
+import cafe from '../components/images/cafe.png';
+import TitleCafe from '../components/TitleCafe';
 
 
 function App() {
@@ -47,7 +49,7 @@ function App() {
                     <DivInput>
                         <TextLabel>Insira o nome</TextLabel>
                         <Input></Input>
-                        <ButtonInput>Adicionar</ButtonInput>
+                        <ButtonInput onClick={() => console.log('salve')}>Adicionar</ButtonInput>
                     </DivInput>
                     <DivList>
                         <TextUl>Lista de participantes</TextUl>
@@ -61,12 +63,8 @@ function App() {
                     <funcionario />
                 </Navigation>
                 <CalendarContainer>
-                    <HeaderCalendar>
-                        <TextHeader>Janeiro</TextHeader>
-                        <IoIosArrowForward color="white" />
-                    </HeaderCalendar>
                     <Calendar />
-                    <TextFoot>Dia do Café</TextFoot>
+                    <TitleCafe />
                     <DivFoot>
                         <DivSeg>
                             <DayWeek>seg</DayWeek>

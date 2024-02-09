@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import cafe from '../components/images/cafe.png';
 
 export const darkTheme = {
     body: "#171717",
@@ -97,6 +98,10 @@ export const ButtonInput = styled.button`
     background: #B73625;
     font-family:'Roboto', sans-serif;
     font-size: 16px;
+    &:hover {
+        cursor: pointer;
+        background-color: purple;
+    }
 `
 export const DivList = styled.div`
     display: flex;
@@ -148,19 +153,21 @@ export const CalendarContainer = styled.div`
     border-color: #747474;
 `;
 
-export const HeaderCalendar = styled.header`
+export const Header = styled.button`
     display: flex;
     background-color: #B73625;
+    border: none;
     align-items: center;
     height: 60px;
     width: 100%;
-`
-export const TextHeader = styled.h5`
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
     color: white;
     padding-left: 40px;
+`
+export const DivTitleCafe = styled.div`
+    display: flex;
 `
 export const TextFoot = styled.h2`
     font-family: 'Montserrat', sans-serif;
@@ -170,6 +177,11 @@ export const TextFoot = styled.h2`
     padding-top: 30px;
     color: ${(props) => props.theme.text};
 `
+export const FootImage = styled.img`
+    width: 10;
+    height: 10;
+`
+
 export const DivFoot = styled.div`
     display: flex;
     justify-content: space-evenly;

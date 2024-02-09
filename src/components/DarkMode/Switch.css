@@ -32,6 +32,7 @@
     background-color: #B73625;
     border-radius: 50%;
     transition: transform 0.3s ease;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .toggle-switch input[type="checkbox"]:checked+.switch::before {
@@ -41,4 +42,8 @@
 
 .toggle-switch input[type="checkbox"]:checked+.switch {
     background-color: #000000;
+}
+
+.toggle-switch.light .switch::before {
+    left: 1px;
 }

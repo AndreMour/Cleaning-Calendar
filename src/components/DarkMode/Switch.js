@@ -10,7 +10,7 @@ function Switch({ toggleTheme, isDarkTheme }) {
     };
 
     return (
-        <label className='toggle-switch'>
+        <label className={`toggle-switch ${isDarkTheme ? 'dark' : 'light'}`}>
             <input type='checkbox' checked={isToggled} onChange={onToggle} />
             <span className='switch' />
         </label>
