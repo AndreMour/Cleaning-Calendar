@@ -23,7 +23,7 @@ export const Container = styled.div`
     box-sizing: border-box;
     background-color: ${(props) => props.theme.body};
 `
-export const Navigation = styled.div`
+export const NavigationContainer = styled.div`
     height: 100%;
     width: 30%;
     background-color: ${(props) => props.theme.body};
