@@ -3,8 +3,7 @@ import {
     TextLabel, Input, ButtonInput, TextUl, ButtonList, DivList, TextLi, UlList, DeleteIcon,
     HeaderCalendar, TextHeader, ContainerNomeFuncionario, NomeFuncionario, CalendarContainer,
     TextFoot, DivFoot, DivSeg, DivTer, DivQua, DivQui, DivSex, DayWeek, NameWeek, Names, darkTheme,
-    lightTheme,
-    Header
+    lightTheme, Header
 } from './styles';
 import Switch from '../components/DarkMode/Switch';
 import { IoAccessibility, IoCloseSharp } from "react-icons/io5";
@@ -12,7 +11,6 @@ import { RxDotFilled } from "react-icons/rx";
 import { useEffect, useState } from 'react';
 import Calendar from '../components/Calendar';
 import { ThemeProvider } from 'styled-components';
-import cafe from '../components/images/cafe.png';
 import TitleCafe from '../components/TitleCafe';
 
 

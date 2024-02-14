@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import cafe from '../components/images/cafe.png';
 
 export const darkTheme = {
     body: "#171717",
@@ -168,20 +167,16 @@ export const Header = styled.button`
 `
 export const DivTitleCafe = styled.div`
     display: flex;
+    align-items: center;
 `
 export const TextFoot = styled.h2`
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 28px;
-    padding-left: 75px;
+    padding-left: 76px;
     padding-top: 30px;
     color: ${(props) => props.theme.text};
 `
-export const FootImage = styled.img`
-    width: 10;
-    height: 10;
-`
-
 export const DivFoot = styled.div`
     display: flex;
     justify-content: space-evenly;
