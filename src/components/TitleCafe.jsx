@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { DivTitleCafe, FootImage, TextFoot } from '../Pages/styles';
+import { DivTitleCafe, TextFoot } from '../Pages/styles';
 import cafe from '../components/assets/cafe.png';
 
 const CoverImg = styled.img.attrs((props) => ({

@@ -22,10 +22,6 @@ function App() {
         setTheme(isDarkTheme ? "light" : "dark");
     }
 
-    useEffect(() => {
-        document.title = 'Cleaning Calendar';
-    })
-
     const funcionario = () => {
         return (
             <ContainerNomeFuncionario>
