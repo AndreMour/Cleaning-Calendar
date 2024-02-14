@@ -3,10 +3,6 @@ import styled, { css } from 'styled-components';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-const Button = styled.div`
-  cursor: pointer;
-`;
-
 const Body = styled.div`
   width: 100%;
   display: flex;

@@ -98,8 +98,9 @@ export const ButtonInput = styled.button`
     font-family:'Roboto', sans-serif;
     font-size: 16px;
     &:hover {
+        box-shadow: 4px 4px 0 black;
+        opacity: 100%;
         cursor: pointer;
-        background-color: purple;
     }
 `
 export const DivList = styled.div`
@@ -129,6 +130,11 @@ export const ButtonList = styled.button`
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: 500;
+    &:hover {
+        box-shadow: 4px 4px 0 black;
+        opacity: 100%;
+        cursor: pointer;
+    }
 `
 export const ContainerNomeFuncionario = styled.div`
     display: flex;
