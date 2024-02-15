@@ -5,7 +5,7 @@ import cafe from '../components/assets/cafe.png';
 const CoverImg = styled.img.attrs((props) => ({
     src: props.src,
 }))`
-    padding: 20px 0 0 20px;
+    padding: 22px 0 0 20px;
     width: 35px;
     height:35px;
   `

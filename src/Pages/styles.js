@@ -28,28 +28,6 @@ export const NavigationContainer = styled.div`
     width: 30%;
     background-color: ${(props) => props.theme.body};
 `
-export const DivButton = styled.div`
-    position: absolute;
-    display: flex;
-    align-items: center;
-    height: 30px;
-    border-radius: 100px;
-    background: ${(props) => props.theme.button};
-    transition: 0.5s;
-    border: none;
-    padding-right: 15px;
-    margin: 24px 0 0 24px;
-`
-export const Indicator = styled.div`
-    width: 31px;
-    height: 31px;
-    background: #B73625;
-    border-radius: 50%;
-    transform: scale(0.9);
-    box-shadow: 0px 3px 1px 0px #0000000F;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    margin-right: 15px;
-`
 export const Title = styled.h2`
     display: flex;
     justify-content: center;
@@ -58,13 +36,13 @@ export const Title = styled.h2`
     font-size: 28px;
     font-weight: 600;
     color: ${(props) => props.theme.text};
-    padding-top: 80px;
+    padding-top: 50px;
 `
 export const DivInput = styled.div`
     display: grid;
+    justify-content: center;
     max-width: 279px;
-    padding: 60px;
-    padding-top: 40px;
+    padding: 40px 0 60px 0;
     margin: 0 auto;
 `
 export const TextLabel = styled.label`
@@ -87,13 +65,12 @@ export const ButtonInput = styled.button`
     display: flex;
     justify-content: center;
     align-items:center;
-    margin:20px 0 0 75px;
+    margin: 25px auto;
     border: none;
     color: white;
     width: 120px;
     height: 33px;
     border-radius: 5px;
-    padding: 7px 46px 7px 46px;
     background: #B73625;
     font-family:'Roboto', sans-serif;
     font-size: 16px;
@@ -107,7 +84,7 @@ export const DivList = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 38px;
+    padding-right: 41px;
 `
 export const TextUl = styled.ul`
     font-family: 'Montserrat', sans-serif;
@@ -122,9 +99,8 @@ export const ButtonList = styled.button`
     width: 85px;
     height: 26px;
     border-radius: 5px;
-    padding: 7px 46px 7px 46px;
     border: none;
-    margin-left: 30px;
+    margin-left: 20px;
     background: #B73625;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -136,28 +112,30 @@ export const ButtonList = styled.button`
         cursor: pointer;
     }
 `
-export const ContainerNomeFuncionario = styled.div`
+export const DivNames = styled.div`
+    display: grid;
+    margin-top: 15px;
+    color: ${(props) => props.theme.text};
+`
+export const ListNames = styled.div`
     display: flex;
-
-`
-export const NomeFuncionario = styled.p`
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px 10px 50px;
     font-family: 'Roboto', sans-serif;
-    color: black;
+    font-weight: 400;
+    font-size: 16px; 
 `
-
-export const DeleteIcon = styled.img.attrs({})`
-    width: 20px;
-    height: 20px;
-    color: black;
+export const DivNamesList = styled.div`
+    display: flex;
+    align-items: center;
 `
-
 export const CalendarContainer = styled.div`
     width: 70%;
     height: 100%;
     border-left: 1px solid;
     border-color: #747474;
 `;
-
 export const Header = styled.button`
     display: flex;
     background-color: #B73625;

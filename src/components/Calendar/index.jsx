@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import DrawGrid from '../DrawGrid';
 
 const Body = styled.div`
   width: 100%;
