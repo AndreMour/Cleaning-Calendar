@@ -75,7 +75,7 @@ export const ButtonInput = styled.button`
     font-family:'Roboto', sans-serif;
     font-size: 16px;
     &:hover {
-        box-shadow: 4px 4px 0 black;
+        box-shadow: 4px 4px 0 #772419;
         opacity: 100%;
         cursor: pointer;
     }
@@ -107,7 +107,7 @@ export const ButtonList = styled.button`
     font-size: 13px;
     font-weight: 500;
     &:hover {
-        box-shadow: 4px 4px 0 black;
+        box-shadow: 4px 4px 0 #772419;
         opacity: 100%;
         cursor: pointer;
     }

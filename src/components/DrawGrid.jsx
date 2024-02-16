@@ -2,13 +2,14 @@ import {
     Title, DivInput, TextLabel, Input,
     ButtonInput, DivList, TextUl, ButtonList, DivNames, ListNames, DivNamesList
 } from "../Pages/styles";
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
 
-function DrawGrid() {
+const DrawGrid = ({ }) => {
     const [names, setNames] = useState("");
     const [participants, setParticipants] = useState([]);
+    const [fridayGroups, setFridayGroups] = useState([]);
 
     const handleChange = (event) => {
         setNames(event.target.value);
@@ -42,8 +43,8 @@ function DrawGrid() {
     const sortParticipantsIntoTeams = () => {
         const numTeams = Math.ceil(participants.length / 2);
         const teams = generateTeams(participants, numTeams);
-        console.log(teams);
-
+        setFridayGroups(teams);
+        console.log('Grupos de sexta-feira sorteados:', fridayGroups);
     };
 
     return (

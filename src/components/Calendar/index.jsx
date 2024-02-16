@@ -8,15 +8,13 @@ const Body = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-`;
-
+`
 const DaysOfTheWeek = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 8vh;
-`;
-
+`
 const DayWeek = styled.div`
   border: 1px solid;
   border-bottom: 1px solid;
@@ -57,9 +55,16 @@ const Day = styled.div`
     css`
       border: 1px solid #B73625;
     `}
+
+  ${(props) =>
+    props.isFriday &&
+    css`
+      background-color: cadetblue;
+    `}
 `;
 
-export default function Calendar() {
+export default function Calendar({ fridayGroups }) {
+  console.log('Grupos de sexta-feira recebidos:', fridayGroups);
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
@@ -90,6 +95,15 @@ export default function Calendar() {
     setStartDay(getStartDayOfMonth(date));
   }, [date]);
 
+  const isFriday = (year, month, day) => {
+    const date = new Date(year, month, day);
+    for (var i; fridayGroups.lenght; i++) {
+      <p>{fridayGroups.i}</p>
+    }
+
+    return date.getDay() === 5
+  }
+
   return (
     <Body>
       <Header>
@@ -110,15 +124,23 @@ export default function Calendar() {
         .fill(null)
         .map((_, index) => {
           const d = index - (startDay - 2);
+          const isCurrentMonth = d > 0 && d <= days[month];
+          const isFridayDay = isCurrentMonth && isFriday(year, month, d);
+          const fridayGroup = fridayGroups[index] || [];
+
           return (
             <DaysOfTheMonth key={index}>
               <Day
                 key={index}
                 isToday={d === today.getDate()}
                 isSelected={d === day}
+                isFriday={isFridayDay}
                 onClick={() => setDate(new Date(year, month, d))}
               >
                 {d > 0 && d <= days[month] ? d : ''}
+                {isFridayDay && fridayGroup.map((participant, idx) => (
+                  <div key={idx}>{participant}</div>
+                ))}
               </Day>
             </DaysOfTheMonth>
           );
