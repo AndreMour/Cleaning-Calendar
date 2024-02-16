@@ -24,17 +24,27 @@ function DrawGrid() {
     const handleDeleteParticipant = (index) => {
         const DeletePartcipants = participants.filter((partcipant, i) => i !== index);
         setParticipants(DeletePartcipants);
-    }
+    };
 
-    const sortParticipant = () => {
-        const ShuffledParticipant = [...participants];
+    const generateTeams = (players, numTeams) => {
+        const tempArray = [...players];
+        const shuffledPlayers = tempArray.sort(() => Math.random() - 0.5);
+        const playerPerTeam = Math.floor(tempArray.length / numTeams);
+        const results = [];
 
-        ShuffledParticipant.sort(() => Math.random() - 0.5);
+        while (shuffledPlayers.length > 0) {
+            results.push(shuffledPlayers.splice(0, playerPerTeam));
+        }
 
-        const selectedParticipants = ShuffledParticipant.slice(0, 2);
+        return results;
+    };
 
-        setParticipants(ShuffledParticipant);
-    }
+    const sortParticipantsIntoTeams = () => {
+        const numTeams = Math.ceil(participants.length / 2);
+        const teams = generateTeams(participants, numTeams);
+        console.log(teams);
+
+    };
 
     return (
         <>
@@ -46,7 +56,7 @@ function DrawGrid() {
             </DivInput>
             <DivList>
                 <TextUl>Lista de participantes</TextUl>
-                <ButtonList onClick={sortParticipant}>Sortear</ButtonList>
+                <ButtonList onClick={sortParticipantsIntoTeams}>Sortear</ButtonList>
             </DivList>
             <DivNames>
                 {participants.map((participant, index) => (
