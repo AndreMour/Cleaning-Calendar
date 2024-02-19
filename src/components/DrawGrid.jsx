@@ -6,14 +6,19 @@ import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
 
-const DrawGrid = ({ }) => {
+const DrawGrid = ({ setFridayGroups, fridayGroups }) => {
     const [names, setNames] = useState("");
     const [participants, setParticipants] = useState([]);
-    const [fridayGroups, setFridayGroups] = useState([]);
 
     const handleChange = (event) => {
         setNames(event.target.value);
     };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleAddParticipant();
+        }
+    }
 
     const handleAddParticipant = () => {
         if (names.trim() !== '') {
@@ -44,7 +49,7 @@ const DrawGrid = ({ }) => {
         const numTeams = Math.ceil(participants.length / 2);
         const teams = generateTeams(participants, numTeams);
         setFridayGroups(teams);
-        console.log('Grupos de sexta-feira sorteados:', fridayGroups);
+        console.log('Grupos de sexta-feira sorteados:', teams);
     };
 
     return (
@@ -52,7 +57,7 @@ const DrawGrid = ({ }) => {
             <Title>Calendário de Limpeza</Title>
             <DivInput>
                 <TextLabel>Insira o nome</TextLabel>
-                <Input type="text" value={names} onChange={handleChange} />
+                <Input type="text" value={names} onChange={handleChange} onKeyPress={handleKeyPress} />
                 <ButtonInput onClick={handleAddParticipant}>Adicionar</ButtonInput>
             </DivInput>
             <DivList>
