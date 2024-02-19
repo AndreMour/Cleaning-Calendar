@@ -1,67 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import { Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day } from '../Calendar/styles';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import DrawGrid from '../DrawGrid';
-
-const Body = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-`
-const DaysOfTheWeek = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 8vh;
-`
-const DayWeek = styled.div`
-  border: 1px solid;
-  border-bottom: 1px solid;
-  border-left: 0;
-  border-color: #747474;
-  width: 100%;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 8px;
-  color: ${(props) => props.theme.text};
-`
-const DaysOfTheMonth = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: calc(100%/7);
-  height: 110px;
-`
-const Day = styled.div`
-  width: 100%;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  border-bottom: 1px solid #747474;
-  border-right: 1px solid #747474;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 8px;
-  cursor: pointer;
-  color: ${(props) => props.theme.text};
-
-  ${(props) =>
-    props.isToday &&
-    css`
-      border: 1px solid #B73625;
-    `}
-
-  ${(props) =>
-    props.isFriday &&
-    css`
-      background-color: cadetblue;
-    `}
-`;
 
 export default function Calendar({ fridayGroups }) {
   console.log('Grupos de sexta-feira recebidos:', fridayGroups);
@@ -111,7 +51,7 @@ export default function Calendar({ fridayGroups }) {
         <div>
           {MONTHS[month]} {year}
         </div>
-        <IoIosArrowForward color="white" onClick={() => setDate(new Date(year, month + 1,))} />
+        <IoIosArrowForward onClick={() => setDate(new Date(year, month + 1,))} />
       </Header>
       <DaysOfTheWeek>
         {DAYS_OF_THE_WEEK.map((d) => (
