@@ -2,11 +2,11 @@ import {
     Title, DivInput, TextLabel, Input,
     ButtonInput, DivList, TextUl, ButtonList, DivNames, ListNames, DivNamesList
 } from "../Pages/styles";
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
 
-const DrawGrid = ({ setFridayGroups, fridayGroups }) => {
+const DrawGrid = ({ setFridayGroups }) => {
     const [names, setNames] = useState("");
     const [participants, setParticipants] = useState([]);
 

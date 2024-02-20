@@ -50,11 +50,25 @@ export const Day = styled.div`
     props.isToday &&
     css`
       border: 1px solid #B73625;
+      margin: -1px;
     `}
 
   ${(props) =>
     props.isFriday &&
     css`
-     
+     flex-direction: column-reverse;
     `}
-`;
+`
+
+export const GridParticipants = styled.div`
+  display: grid;
+  background-color: blue;
+  margin-bottom: 20px;
+  margin-right: 110px;
+`
+
+export const Participants = styled.div`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+`

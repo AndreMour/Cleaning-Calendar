@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day } from '../Calendar/styles';
+import { useState, useEffect } from 'react';
+import { Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants, GridParticipants } from '../Calendar/styles';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function Calendar({ fridayGroups }) {
-  console.log('Grupos de sexta-feira recebidos:', fridayGroups);
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
@@ -37,6 +36,7 @@ export default function Calendar({ fridayGroups }) {
 
   const isFriday = (year, month, day) => {
     const date = new Date(year, month, day);
+
     for (var i; fridayGroups.lenght; i++) {
       <p>{fridayGroups.i}</p>
     }
@@ -66,7 +66,13 @@ export default function Calendar({ fridayGroups }) {
           const d = index - (startDay - 2);
           const isCurrentMonth = d > 0 && d <= days[month];
           const isFridayDay = isCurrentMonth && isFriday(year, month, d);
-          const fridayGroup = fridayGroups[index] || [];
+
+          let participantsForDay = [];
+
+          if (isFridayDay) {
+            const fridayIndex = Math.floor((d - 1) / 7) % fridayGroups.length;
+            participantsForDay = fridayGroups[fridayIndex];
+          }
 
           return (
             <DaysOfTheMonth key={index}>
@@ -78,8 +84,10 @@ export default function Calendar({ fridayGroups }) {
                 onClick={() => setDate(new Date(year, month, d))}
               >
                 {d > 0 && d <= days[month] ? d : ''}
-                {isFridayDay && fridayGroup.map((participant, idx) => (
-                  <div key={idx}>{participant}</div>
+                {isFridayDay && participantsForDay.map((participant, idx) => (
+                  <GridParticipants>
+                    <Participants key={idx}>{participant}</Participants>
+                  </GridParticipants>
                 ))}
               </Day>
             </DaysOfTheMonth>

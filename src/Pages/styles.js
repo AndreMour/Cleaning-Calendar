@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const darkTheme = {
     body: "#171717",
@@ -17,7 +17,7 @@ export const lightTheme = {
 export const Container = styled.div`
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 1070px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -79,6 +79,10 @@ export const ButtonInput = styled.button`
         opacity: 100%;
         cursor: pointer;
     }
+
+    &:active {
+        transform: translateY(1px);
+        }
 `
 export const DivList = styled.div`
     display: flex;
@@ -111,6 +115,10 @@ export const ButtonList = styled.button`
         opacity: 100%;
         cursor: pointer;
     }
+
+    &:active {
+        transform: translateY(1px);
+        }
 `
 export const DivNames = styled.div`
     display: grid;
@@ -170,8 +178,7 @@ export const DivSeg = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
-    border-top: 2px solid;
-    border-color: #B73625;
+    border-top: 2px solid #B73625;
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bodyWeek};
 `
