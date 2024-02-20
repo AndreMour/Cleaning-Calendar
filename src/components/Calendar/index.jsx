@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants, GridParticipants } from '../Calendar/styles';
+import {
+  Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants,
+  DayMonth, ParticipantsContainer, DayContent
+} from '../Calendar/styles';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
@@ -10,11 +13,11 @@ export default function Calendar({ fridayGroups }) {
   const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
   const today = new Date();
-  const [date, setDate] = useState(today);
-  const [day, setDay] = useState(date.getDate());
-  const [month, setMonth] = useState(date.getMonth());
-  const [year, setYear] = useState(date.getFullYear());
-  const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
+  const [currentDate, setCurrentDate] = useState(today);
+  const [day, setDay] = useState(currentDate.getDate());
+  const [month, setMonth] = useState(currentDate.getMonth());
+  const [year, setYear] = useState(currentDate.getFullYear());
+  const [startDay, setStartDay] = useState(getStartDayOfMonth(currentDate));
 
   const days = isLeapYear(year) ? DAYS_LEAP : DAYS;
 
@@ -28,30 +31,22 @@ export default function Calendar({ fridayGroups }) {
   }
 
   useEffect(() => {
-    setDay(date.getDate());
-    setMonth(date.getMonth());
-    setYear(date.getFullYear());
-    setStartDay(getStartDayOfMonth(date));
-  }, [date]);
+    setDay(currentDate.getDate());
+    setMonth(currentDate.getMonth());
+    setYear(currentDate.getFullYear());
+    setStartDay(getStartDayOfMonth(currentDate));
+  }, [currentDate]);
 
-  const isFriday = (year, month, day) => {
-    const date = new Date(year, month, day);
-
-    for (var i; fridayGroups.lenght; i++) {
-      <p>{fridayGroups.i}</p>
-    }
-
-    return date.getDay() === 5
-  }
+  let fridayIndex = 0;
 
   return (
     <Body>
       <Header>
-        <IoIosArrowBack onClick={() => setDate(new Date(year, month - 1,))} />
+        <IoIosArrowBack onClick={() => setCurrentDate(new Date(year, month - 1,))} />
         <div>
           {MONTHS[month]} {year}
         </div>
-        <IoIosArrowForward onClick={() => setDate(new Date(year, month + 1,))} />
+        <IoIosArrowForward onClick={() => setCurrentDate(new Date(year, month + 1,))} />
       </Header>
       <DaysOfTheWeek>
         {DAYS_OF_THE_WEEK.map((d) => (
@@ -64,34 +59,46 @@ export default function Calendar({ fridayGroups }) {
         .fill(null)
         .map((_, index) => {
           const d = index - (startDay - 2);
-          const isCurrentMonth = d > 0 && d <= days[month];
-          const isFridayDay = isCurrentMonth && isFriday(year, month, d);
+          const dateOfMonth = new Date(year, month, d);
 
-          let participantsForDay = [];
+          if (dateOfMonth.getDay() === 5 && fridayGroups.length > fridayIndex) {
+            const currentFridayGroup = fridayGroups[fridayIndex];
 
-          if (isFridayDay) {
-            const fridayIndex = Math.floor((d - 1) / 7) % fridayGroups.length;
-            participantsForDay = fridayGroups[fridayIndex];
+            fridayIndex++;
+
+            return (
+              <DaysOfTheMonth key={index}>
+                <Day
+                  key={index}
+                  isToday={d === currentDate.getDate()}
+                  isSelected={d === day}
+                  onClick={() => setCurrentDate(new Date(year, month, d))}
+                >
+                  <DayContent>
+                    {d > 0 && d <= days[month] ? d : ''}
+                    <ParticipantsContainer>
+                      {currentFridayGroup.map((participant, idx) => (
+                        <Participants key={idx}>{participant}</Participants>
+                      ))}
+                    </ParticipantsContainer>
+                  </DayContent>
+                </Day>
+              </DaysOfTheMonth>
+            );
+          } else {
+            return (
+              <DaysOfTheMonth key={index}>
+                <Day
+                  key={index}
+                  isToday={d === currentDate.getDate()}
+                  isSelected={d === day}
+                  onClick={() => setCurrentDate(new Date(year, month, d))}
+                >
+                  {d > 0 && d <= days[month] ? d : ''}
+                </Day>
+              </DaysOfTheMonth>
+            );
           }
-
-          return (
-            <DaysOfTheMonth key={index}>
-              <Day
-                key={index}
-                isToday={d === today.getDate()}
-                isSelected={d === day}
-                isFriday={isFridayDay}
-                onClick={() => setDate(new Date(year, month, d))}
-              >
-                {d > 0 && d <= days[month] ? d : ''}
-                {isFridayDay && participantsForDay.map((participant, idx) => (
-                  <GridParticipants>
-                    <Participants key={idx}>{participant}</Participants>
-                  </GridParticipants>
-                ))}
-              </Day>
-            </DaysOfTheMonth>
-          );
         })}
     </Body>
   );

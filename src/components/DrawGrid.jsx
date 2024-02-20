@@ -48,8 +48,7 @@ const DrawGrid = ({ setFridayGroups }) => {
     const sortParticipantsIntoTeams = () => {
         const numTeams = Math.ceil(participants.length / 2);
         const teams = generateTeams(participants, numTeams);
-        setFridayGroups(teams);
-        console.log('Grupos de sexta-feira sorteados:', teams);
+        return teams;
     };
 
     return (
@@ -62,7 +61,7 @@ const DrawGrid = ({ setFridayGroups }) => {
             </DivInput>
             <DivList>
                 <TextUl>Lista de participantes</TextUl>
-                <ButtonList onClick={sortParticipantsIntoTeams}>Sortear</ButtonList>
+                <ButtonList onClick={() => setFridayGroups(sortParticipantsIntoTeams())}>Sortear</ButtonList>
             </DivList>
             <DivNames>
                 {participants.map((participant, index) => (

@@ -16,13 +16,13 @@ export const DayWeek = styled.div`
   border-bottom: 1px solid;
   border-left: 0;
   border-color: #747474;
-  width: 100%;
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 500;
-  align-items: flex-end;
-  justify-content: flex-start;
   padding: 8px;
   color: ${(props) => props.theme.text};
 `
@@ -33,15 +33,17 @@ export const DaysOfTheMonth = styled.div`
   height: 110px;
 `
 export const Day = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   border-bottom: 1px solid #747474;
   border-right: 1px solid #747474;
-  align-items: flex-end;
-  justify-content: flex-end;
   padding: 8px;
   cursor: pointer;
   color: ${(props) => props.theme.text};
@@ -53,22 +55,37 @@ export const Day = styled.div`
       margin: -1px;
     `}
 
-  ${(props) =>
-    props.isFriday &&
+    ${(props) =>
+    props.isSelected &&
     css`
-     flex-direction: column-reverse;
+     background-color: #171717;
     `}
 `
-
-export const GridParticipants = styled.div`
-  display: grid;
+export const DayContent = styled.div`
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;    
+`
+export const ParticipantsContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   background-color: blue;
-  margin-bottom: 20px;
-  margin-right: 110px;
+  overflow: hidden;
+  margin-right: 60px;
+  margin-bottom: 25px;
 `
 
-export const Participants = styled.div`
+export const Participants = styled.span`
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
+  margin-top: 5px;
+  margin-right: 50px;
+  margin-bottom: 20px;
 `
