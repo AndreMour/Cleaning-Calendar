@@ -49,43 +49,34 @@ export const Day = styled.div`
   color: ${(props) => props.theme.text};
 
   ${(props) =>
-    props.isToday &&
+    props.today &&
     css`
       border: 1px solid #B73625;
       margin: -1px;
     `}
 
     ${(props) =>
-    props.isSelected &&
+    props.selected &&
     css`
-     background-color: #171717;
     `}
 `
 export const DayContent = styled.div`
   position: absolute;
-  bottom: -10px;
-  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;    
+  bottom: -10px;
+  margin-left: 10px; 
 `
 export const ParticipantsContainer = styled.div`
-  position: relative;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  background-color: blue;
   overflow: hidden;
-  margin-right: 60px;
-  margin-bottom: 25px;
+  margin: 0 50px 27px 0;
 `
 
 export const Participants = styled.span`
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  margin-top: 5px;
-  margin-right: 50px;
-  margin-bottom: 20px;
+  margin: 10px 35px 10px 0;
+  color: ${(props) => props.theme.text};
 `

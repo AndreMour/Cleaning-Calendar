@@ -23,11 +23,14 @@ export const Container = styled.div`
     box-sizing: border-box;
     background-color: ${(props) => props.theme.body};
 `
+
 export const NavigationContainer = styled.div`
     height: 100%;
     width: 30%;
+    overflow-y: auto;
     background-color: ${(props) => props.theme.body};
 `
+
 export const Title = styled.h2`
     display: flex;
     justify-content: center;

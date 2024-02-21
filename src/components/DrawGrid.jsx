@@ -1,6 +1,6 @@
 import {
     Title, DivInput, TextLabel, Input,
-    ButtonInput, DivList, TextUl, ButtonList, DivNames, ListNames, DivNamesList
+    ButtonInput, DivList, TextUl, ButtonList, DivNames, ListNames, DivNamesList,
 } from "../Pages/styles";
 import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
@@ -48,6 +48,7 @@ const DrawGrid = ({ setFridayGroups }) => {
     const sortParticipantsIntoTeams = () => {
         const numTeams = Math.ceil(participants.length / 2);
         const teams = generateTeams(participants, numTeams);
+        console.log(teams)
         return teams;
     };
 

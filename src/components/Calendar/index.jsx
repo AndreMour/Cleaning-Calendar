@@ -1,10 +1,28 @@
 import { useState, useEffect } from 'react';
 import {
   Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants,
-  DayMonth, ParticipantsContainer, DayContent
+  ParticipantsContainer, DayContent
 } from '../Calendar/styles';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+
+function getAllFridays(year, startMonth = 0, endMonth = 11) {
+  const fridays = [];
+
+  for (let month = startMonth; month <= endMonth; month++) {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(year, month, day);
+
+      if (date.getDay() === 5) {
+        fridays.push(date);
+      }
+    }
+  }
+
+  return fridays;
+}
 
 export default function Calendar({ fridayGroups }) {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -12,8 +30,8 @@ export default function Calendar({ fridayGroups }) {
   const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
   const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-  const today = new Date();
-  const [currentDate, setCurrentDate] = useState(today);
+  const date = new Date();
+  const [currentDate, setCurrentDate] = useState(date);
   const [day, setDay] = useState(currentDate.getDate());
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
@@ -37,7 +55,9 @@ export default function Calendar({ fridayGroups }) {
     setStartDay(getStartDayOfMonth(currentDate));
   }, [currentDate]);
 
-  let fridayIndex = 0;
+  const allFridays = getAllFridays(year, 0, 11);
+
+  let groupsIndex = 0;
 
   return (
     <Body>
@@ -59,29 +79,29 @@ export default function Calendar({ fridayGroups }) {
         .fill(null)
         .map((_, index) => {
           const d = index - (startDay - 2);
-          const dateOfMonth = new Date(year, month, d);
 
-          if (dateOfMonth.getDay() === 5 && fridayGroups.length > fridayIndex) {
-            const currentFridayGroup = fridayGroups[fridayIndex];
-
-            fridayIndex++;
+          if (allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month)) {
+            const currentGroups = fridayGroups[groupsIndex];
+            groupsIndex++;
 
             return (
               <DaysOfTheMonth key={index}>
                 <Day
                   key={index}
-                  isToday={d === currentDate.getDate()}
-                  isSelected={d === day}
+                  today={d === currentDate.getDate() ? d : ''}
+                  selected={d === day}
                   onClick={() => setCurrentDate(new Date(year, month, d))}
                 >
-                  <DayContent>
-                    {d > 0 && d <= days[month] ? d : ''}
-                    <ParticipantsContainer>
-                      {currentFridayGroup.map((participant, idx) => (
-                        <Participants key={idx}>{participant}</Participants>
-                      ))}
-                    </ParticipantsContainer>
-                  </DayContent>
+                  {d > 0 && d <= days[month] ? d : ''}
+                  {currentGroups && (
+                    <DayContent>
+                      <ParticipantsContainer>
+                        {currentGroups.map((participant, idx) => (
+                          <Participants key={idx}>{participant}</Participants>
+                        ))}
+                      </ParticipantsContainer>
+                    </DayContent>
+                  )}
                 </Day>
               </DaysOfTheMonth>
             );
@@ -90,8 +110,8 @@ export default function Calendar({ fridayGroups }) {
               <DaysOfTheMonth key={index}>
                 <Day
                   key={index}
-                  isToday={d === currentDate.getDate()}
-                  isSelected={d === day}
+                  today={d === currentDate.getDate() ? d : ''}
+                  selected={d === day}
                   onClick={() => setCurrentDate(new Date(year, month, d))}
                 >
                   {d > 0 && d <= days[month] ? d : ''}
