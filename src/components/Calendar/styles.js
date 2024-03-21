@@ -66,6 +66,9 @@ export const DayContent = styled.div`
   bottom: -10px;
   margin-left: 10px; 
 `
+export const DivGroup = styled.div`
+  margin-right: 170px;
+`
 export const ParticipantsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

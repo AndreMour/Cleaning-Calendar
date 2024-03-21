@@ -1,28 +1,10 @@
 import { useState, useEffect } from 'react';
 import {
   Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants,
-  ParticipantsContainer, DayContent
+  ParticipantsContainer, DayContent, DivGroup
 } from '../Calendar/styles';
 import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-
-function getAllFridays(year, startMonth = 0, endMonth = 11) {
-  const fridays = [];
-
-  for (let month = startMonth; month <= endMonth; month++) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    for (let day = 1; day <= daysInMonth; day++) {
-      const date = new Date(year, month, day);
-
-      if (date.getDay() === 5) {
-        fridays.push(date);
-      }
-    }
-  }
-
-  return fridays;
-}
 
 export default function Calendar({ fridayGroups }) {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -36,8 +18,10 @@ export default function Calendar({ fridayGroups }) {
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
   const [startDay, setStartDay] = useState(getStartDayOfMonth(currentDate));
+  const [allFridays, setAllFridays] = useState([]);
 
   const days = isLeapYear(year) ? DAYS_LEAP : DAYS;
+  const today = new Date();
 
   function getStartDayOfMonth(date) {
     const startDate = new Date(date.getFullYear(), date.getMonth(), 2).getDay();
@@ -48,16 +32,71 @@ export default function Calendar({ fridayGroups }) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   }
 
+  function getAllFridays(year, startMonth = 0, endMonth = 11) {
+    const fridays = [];
+    const currentMonth = today.getMonth();
+    const currentDay = today.getDate();
+
+    for (let month = startMonth; month <= endMonth; month++) {
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+
+        if (date.getDay() === 5) {
+          if (month < currentMonth || (month === currentMonth && day < currentDay)) {
+            continue;
+          }
+          fridays.push(date);
+        }
+      }
+    }
+    return fridays;
+  }
+
+  const displayFriday = (d, month) => {
+    const isFriday = allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month);
+    const fridayIndex = allFridays.findIndex(friday => friday.getDate() === d && friday.getMonth() === month);
+
+    if (isFriday && fridayIndex >= 0) {
+      const currentGroups = fridayGroups[fridayIndex];
+      console.log(currentGroups)
+
+      if (currentGroups && currentGroups.length > 0) {
+        return displayGroup(currentGroups);
+      }
+    }
+
+    return null;
+  };
+
+
+  const displayGroup = (currentGroups) => {
+
+    return (
+      <DivGroup>
+        {
+          currentGroups && (
+            <DayContent>
+              <ParticipantsContainer>
+                {currentGroups.map((participant, idx) => (
+                  <Participants key={idx}>{participant}</Participants>
+                ))}
+              </ParticipantsContainer>
+            </DayContent>
+          )
+        }
+      </DivGroup>
+    )
+  }
+
   useEffect(() => {
     setDay(currentDate.getDate());
     setMonth(currentDate.getMonth());
     setYear(currentDate.getFullYear());
     setStartDay(getStartDayOfMonth(currentDate));
+    setAllFridays(getAllFridays(currentDate.getFullYear(), 0, 11));
   }, [currentDate]);
-
-  const allFridays = getAllFridays(year, 0, 11);
-
-  let groupsIndex = 0;
 
   return (
     <Body>
@@ -75,50 +114,25 @@ export default function Calendar({ fridayGroups }) {
           </DayWeek>
         ))}
       </DaysOfTheWeek>
-      {Array(Math.ceil((days[month] + startDay - 1) / 7) * 7)
+      {Array(Math.ceil((days[month] + startDay) / 7) * 7)
         .fill(null)
         .map((_, index) => {
           const d = index - (startDay - 2);
 
-          if (allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month)) {
-            const currentGroups = fridayGroups[groupsIndex];
-            groupsIndex++;
+          return (
+            <DaysOfTheMonth key={index}>
+              <Day
+                key={index}
+                today={d === currentDate.getDate() ? d : ''}
+                selected={d === day}
+                onClick={() => setCurrentDate(new Date(year, month, d))}
+              >
+                {d > 0 && d <= days[month] ? d : ''}
+                {displayFriday(d, month)}
+              </Day>
+            </DaysOfTheMonth>
+          );
 
-            return (
-              <DaysOfTheMonth key={index}>
-                <Day
-                  key={index}
-                  today={d === currentDate.getDate() ? d : ''}
-                  selected={d === day}
-                  onClick={() => setCurrentDate(new Date(year, month, d))}
-                >
-                  {d > 0 && d <= days[month] ? d : ''}
-                  {currentGroups && (
-                    <DayContent>
-                      <ParticipantsContainer>
-                        {currentGroups.map((participant, idx) => (
-                          <Participants key={idx}>{participant}</Participants>
-                        ))}
-                      </ParticipantsContainer>
-                    </DayContent>
-                  )}
-                </Day>
-              </DaysOfTheMonth>
-            );
-          } else {
-            return (
-              <DaysOfTheMonth key={index}>
-                <Day
-                  key={index}
-                  today={d === currentDate.getDate() ? d : ''}
-                  selected={d === day}
-                  onClick={() => setCurrentDate(new Date(year, month, d))}
-                >
-                  {d > 0 && d <= days[month] ? d : ''}
-                </Day>
-              </DaysOfTheMonth>
-            );
-          }
         })}
     </Body>
   );

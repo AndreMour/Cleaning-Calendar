@@ -48,7 +48,6 @@ const DrawGrid = ({ setFridayGroups }) => {
     const sortParticipantsIntoTeams = () => {
         const numTeams = Math.ceil(participants.length / 2);
         const teams = generateTeams(participants, numTeams);
-        console.log(teams)
         return teams;
     };
 
