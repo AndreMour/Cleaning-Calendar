@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants,
   ParticipantsContainer, DayContent, DivGroup, Header
-} from '../Calendar/styles';
+} from './styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function Calendar({ fridayGroups }) {
