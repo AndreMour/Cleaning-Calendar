@@ -6,7 +6,6 @@ import Switch from '../components/DarkMode/Switch';
 import { useState, useEffect } from 'react';
 import Calendar from '../components/Calendar';
 import { ThemeProvider } from 'styled-components';
-import TitleCafe from '../components/DaysOfCoffe/TitleCoffe';
 import DrawGrid from '../components/DrawGrid/DrawGrid';
 import DaysOfCoffe from '../components/DaysOfCoffe/DaysOfCoffe';
 
@@ -39,7 +38,6 @@ function App() {
                 </NavigationContainer>
                 <CalendarContainer>
                     <Calendar fridayGroups={fridayGroups} />
-                    <TitleCafe />
                     <DaysOfCoffe />
                 </CalendarContainer>
             </Container>
