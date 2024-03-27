@@ -60,7 +60,6 @@ export default function Calendar({ fridayGroups }) {
 
     if (isFriday && fridayIndex >= 0) {
       const currentGroups = fridayGroups[fridayIndex];
-      console.log(currentGroups)
 
       if (currentGroups && currentGroups.length > 0) {
         return displayGroup(currentGroups);

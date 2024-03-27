@@ -46,8 +46,17 @@ const DrawGrid = ({ setFridayGroups }) => {
     };
 
     const sortParticipantsIntoTeams = () => {
-        const numTeams = Math.ceil(participants.length / 2);
-        const teams = generateTeams(participants, numTeams);
+        const shuffledParticipants = [...participants].sort(() => Math.random() - 0.5);
+        const teams = [];
+
+        while (shuffledParticipants.length > 0) {
+            if (shuffledParticipants.length > 1) {
+                teams.push([shuffledParticipants.pop(), shuffledParticipants.pop()]);
+            } else {
+                teams.push([shuffledParticipants.pop()]);
+            }
+        }
+
         return teams;
     };
 
