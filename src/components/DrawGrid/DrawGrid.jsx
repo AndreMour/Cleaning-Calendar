@@ -1,7 +1,7 @@
 import {
     Title, DivInput, TextLabel, Input,
     ButtonInput, DivList, TextUl, ButtonList, DivNames, ListNames, DivNamesList,
-} from "../Pages/styles";
+} from "./styles";
 import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";

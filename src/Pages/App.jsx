@@ -1,13 +1,14 @@
 import {
-    Container, NavigationContainer, CalendarContainer, darkTheme, lightTheme
+    Container, NavigationContainer, CalendarContainer
 } from './styles';
+import { darkTheme, lightTheme } from '../components/Themes/Themes';
 import Switch from '../components/DarkMode/Switch';
 import { useState, useEffect } from 'react';
 import Calendar from '../components/Calendar';
 import { ThemeProvider } from 'styled-components';
-import TitleCafe from '../components/TitleCoffe';
-import DrawGrid from '../components/DrawGrid';
-import DaysOfCoffe from '../components/DaysOfCoffe';
+import TitleCafe from '../components/DaysOfCoffe/TitleCoffe';
+import DrawGrid from '../components/DrawGrid/DrawGrid';
+import DaysOfCoffe from '../components/DaysOfCoffe/DaysOfCoffe';
 
 
 function App() {

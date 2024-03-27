@@ -1,7 +1,7 @@
 import {
     DivFoot, DivSeg, DivTer, DivQua, DivQui, DivSex,
     DayWeek, NameWeek, Names
-} from "../Pages/styles"
+} from "./styles";
 
 const DaysOfCoffe = () => {
     return (

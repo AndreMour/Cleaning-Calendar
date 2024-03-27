@@ -5,6 +5,19 @@ export const Body = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
+export const Header = styled.nav`
+    display: flex;
+    background-color: #B73625;
+    border: none;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    padding-left: 40px;
+`
 export const DaysOfTheWeek = styled.div`
   display: flex;
   flex-direction: row;

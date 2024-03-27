@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import {
   Body, DaysOfTheWeek, DayWeek, DaysOfTheMonth, Day, Participants,
-  ParticipantsContainer, DayContent, DivGroup
+  ParticipantsContainer, DayContent, DivGroup, Header
 } from '../Calendar/styles';
-import { Header } from '../../Pages/styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function Calendar({ fridayGroups }) {
@@ -67,8 +66,7 @@ export default function Calendar({ fridayGroups }) {
     }
 
     return null;
-  };
-
+  }
 
   const displayGroup = (currentGroups) => {
 
@@ -131,7 +129,6 @@ export default function Calendar({ fridayGroups }) {
               </Day>
             </DaysOfTheMonth>
           );
-
         })}
     </Body>
   );

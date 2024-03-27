@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { DivTitleCafe, TextFoot } from '../Pages/styles';
-import cafe from '../components/assets/cafe.png';
+import { DivTitleCafe, TextFoot } from './styles';
+import cafe from '../../assets/cafe.png';
 
 const CoverImg = styled.img.attrs((props) => ({
     src: props.src,
