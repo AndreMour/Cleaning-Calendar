@@ -93,7 +93,6 @@ export const ButtonList = styled.button`
         }
 `
 export const DivNames = styled.div`
-    display: grid;
     margin-top: 15px;
     color: ${(props) => props.theme.text};
 `

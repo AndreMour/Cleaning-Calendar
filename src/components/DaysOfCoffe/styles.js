@@ -25,28 +25,7 @@ export const DivSeg = styled.div`
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bodyWeek};
 `
-export const DivTer = styled.div`
-    width: 174px;
-    height: 124px;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    color: ${(props) => props.theme.text};
-    background-color: ${(props) => props.theme.bodyWeek};
-`
-export const DivQua = styled.div`
-    width: 174px;
-    height: 124px;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    color: ${(props) => props.theme.text};
-    background-color: ${(props) => props.theme.bodyWeek};
-`
-export const DivQui = styled.div`
-    width: 174px;
-    height: 124px;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    color: ${(props) => props.theme.text};
-    background-color: ${(props) => props.theme.bodyWeek};
-`
-export const DivSex = styled.div`
+export const DivDays = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;

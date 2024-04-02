@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import {
-    DivFoot, DivSeg, DivTer, DivQua, DivQui, DivSex,
-    DayWeek, NameWeek, Names, DivTitleCafe, TextFoot
+    DivFoot, DivSeg, DayWeek, NameWeek,
+    Names, DivTitleCafe, TextFoot, DivDays
 } from "./styles";
 import cafe from '../../assets/cafe.png';
 
-const CoverImg = styled.img.attrs((props) => ({
+const Coffe = styled.img.attrs((props) => ({
     src: props.src,
 }))`
     padding: 22px 0 0 20px;
@@ -18,7 +18,7 @@ const DaysOfCoffe = () => {
         <>
             <DivTitleCafe>
                 <TextFoot>Dia do Café</TextFoot>
-                <CoverImg src={cafe} />
+                <Coffe src={cafe} />
             </DivTitleCafe>
             <DivFoot>
                 <DivSeg>
@@ -28,34 +28,34 @@ const DaysOfCoffe = () => {
                         <Names>Gabriel</Names>
                     </NameWeek>
                 </DivSeg>
-                <DivTer>
+                <DivDays>
                     <DayWeek>ter</DayWeek>
                     <NameWeek>
                         <Names>Bruna</Names>
                         <Names>Leo</Names>
                     </NameWeek>
-                </DivTer>
-                <DivQua>
+                </DivDays>
+                <DivDays>
                     <DayWeek>qua</DayWeek>
                     <NameWeek>
                         <Names>Osmar</Names>
                         <Names>Caio</Names>
                     </NameWeek>
-                </DivQua>
-                <DivQui>
+                </DivDays>
+                <DivDays>
                     <DayWeek>qui</DayWeek>
                     <NameWeek>
                         <Names>Wasch</Names>
                         <Names>Nic</Names>
                     </NameWeek>
-                </DivQui>
-                <DivSex>
+                </DivDays>
+                <DivDays>
                     <DayWeek>sex</DayWeek>
                     <NameWeek>
                         <Names>Cláudia</Names>
                         <Names>Pedro K.</Names>
                     </NameWeek>
-                </DivSex>
+                </DivDays>
             </DivFoot>
         </>
     )

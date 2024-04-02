@@ -6,17 +6,17 @@ export const Body = styled.div`
   flex-wrap: wrap;
 `
 export const Header = styled.nav`
-    display: flex;
-    background-color: #B73625;
-    border: none;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: white;
-    padding-left: 40px;
+  display: flex;
+  background-color: #B73625;
+  border: none;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  padding-left: 40px;
 `
 export const DaysOfTheWeek = styled.div`
   display: flex;
@@ -26,7 +26,6 @@ export const DaysOfTheWeek = styled.div`
 `
 export const DayWeek = styled.div`
   border: 1px solid;
-  border-bottom: 1px solid;
   border-left: 0;
   border-color: #747474;
   display: flex;
@@ -67,11 +66,6 @@ export const Day = styled.div`
       border: 1px solid #B73625;
       margin: -1px;
     `}
-
-    ${(props) =>
-    props.selected &&
-    css`
-    `}
 `
 export const DayContent = styled.div`
   position: absolute;
@@ -88,7 +82,6 @@ export const ParticipantsContainer = styled.div`
   overflow: hidden;
   margin: 0 50px 27px 0;
 `
-
 export const Participants = styled.span`
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
