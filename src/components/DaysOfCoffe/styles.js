@@ -2,20 +2,23 @@ import styled from "styled-components";
 
 export const DivTitleCafe = styled.div`
     display: flex;
-    align-items: center;
 `
 export const TextFoot = styled.h2`
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 28px;
-    padding-left: 76px;
-    padding-top: 30px;
     color: ${(props) => props.theme.text};
 `
 export const DivFoot = styled.div`
     display: flex;
     justify-content: space-evenly;
     background-color: ${(props) => props.theme.body};
+    margin-top: 100px;
+`
+export const AlignDiv = styled.div`
+    display: grid;
+    align-items: center;
+    margin: -83px -47px 0 0;
 `
 export const DivSeg = styled.div`
     width: 174px;

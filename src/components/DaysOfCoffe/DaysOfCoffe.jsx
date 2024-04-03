@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import {
     DivFoot, DivSeg, DayWeek, NameWeek,
-    Names, DivTitleCafe, TextFoot, DivDays
+    Names, DivTitleCafe, TextFoot, DivDays,
+    AlignDiv
 } from "./styles";
 import cafe from '../../assets/cafe.png';
 
@@ -16,18 +16,20 @@ const Coffe = styled.img.attrs((props) => ({
 const DaysOfCoffe = () => {
     return (
         <>
-            <DivTitleCafe>
-                <TextFoot>Dia do Café</TextFoot>
-                <Coffe src={cafe} />
-            </DivTitleCafe>
             <DivFoot>
-                <DivSeg>
-                    <DayWeek>seg</DayWeek>
-                    <NameWeek>
-                        <Names>Caio</Names>
-                        <Names>Gabriel</Names>
-                    </NameWeek>
-                </DivSeg>
+                <AlignDiv>
+                    <DivTitleCafe>
+                        <TextFoot>Dia do Café</TextFoot>
+                        <Coffe src={cafe} />
+                    </DivTitleCafe>
+                    <DivSeg>
+                        <DayWeek>seg</DayWeek>
+                        <NameWeek>
+                            <Names>Caio</Names>
+                            <Names>Gabriel</Names>
+                        </NameWeek>
+                    </DivSeg>
+                </AlignDiv>
                 <DivDays>
                     <DayWeek>ter</DayWeek>
                     <NameWeek>
