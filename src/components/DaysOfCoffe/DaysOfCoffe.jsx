@@ -1,7 +1,9 @@
+import styled from "styled-components";
 import {
     DivFoot, DivSeg, DayWeek, NameWeek,
-    Names, DivTitleCafe, TextFoot, DivDays,
-    AlignDiv
+    Names, DivTitleCafe, TextFoot,
+    AlignDiv, DivTer, DivQua, DivQui,
+    DivSex
 } from "./styles";
 import cafe from '../../assets/cafe.png';
 
@@ -30,34 +32,34 @@ const DaysOfCoffe = () => {
                         </NameWeek>
                     </DivSeg>
                 </AlignDiv>
-                <DivDays>
+                <DivTer>
                     <DayWeek>ter</DayWeek>
                     <NameWeek>
                         <Names>Bruna</Names>
                         <Names>Leo</Names>
                     </NameWeek>
-                </DivDays>
-                <DivDays>
+                </DivTer>
+                <DivQua>
                     <DayWeek>qua</DayWeek>
                     <NameWeek>
                         <Names>Osmar</Names>
                         <Names>Caio</Names>
                     </NameWeek>
-                </DivDays>
-                <DivDays>
+                </DivQua>
+                <DivQui>
                     <DayWeek>qui</DayWeek>
                     <NameWeek>
                         <Names>Wasch</Names>
                         <Names>Nic</Names>
                     </NameWeek>
-                </DivDays>
-                <DivDays>
+                </DivQui>
+                <DivSex>
                     <DayWeek>sex</DayWeek>
                     <NameWeek>
                         <Names>Cláudia</Names>
                         <Names>Pedro K.</Names>
                     </NameWeek>
-                </DivDays>
+                </DivSex>
             </DivFoot>
         </>
     )

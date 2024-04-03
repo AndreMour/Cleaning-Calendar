@@ -24,14 +24,39 @@ export const DivSeg = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
-    border-top: 2px solid #B73625;
+    border-top: ${() => (new Date().getDay() === 1 ? "2px solid #B73625" : "none")};
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bodyWeek};
 `
-export const DivDays = styled.div`
+export const DivTer = styled.div`
     width: 174px;
     height: 124px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    border-top: ${() => (new Date().getDay() === 2 ? "2px solid #B73625" : "none")};
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
+`
+export const DivQua = styled.div`
+    width: 174px;
+    height: 124px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-top: ${() => (new Date().getDay() === 3 ? "2px solid #B73625" : "none")};
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
+`
+export const DivQui = styled.div`
+    width: 174px;
+    height: 124px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-top: ${() => (new Date().getDay() === 4 ? "2px solid #B73625" : "none")};
+    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.bodyWeek};
+`
+export const DivSex = styled.div`
+    width: 174px;
+    height: 124px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-top: ${() => (new Date().getDay() === 5 ? "2px solid #B73625" : "none")};
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bodyWeek};
 `
