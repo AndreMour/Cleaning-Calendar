@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import {
-    DivFoot, DivSeg, DayWeek, NameWeek,
+    DivFoot, DayWeek, NameWeek,
     Names, DivTitleCafe, TextFoot,
-    AlignDiv, DivTer, DivQua, DivQui,
-    DivSex
+    AlignDiv, DivDay
 } from "./styles";
 import cafe from '../../assets/cafe.png';
 
@@ -16,6 +16,12 @@ const Coffe = styled.img.attrs((props) => ({
   `
 
 const DaysOfCoffe = () => {
+    const [currentDay, setCurrentDay] = useState(new Date().getDay());
+
+    useEffect(() => {
+        setCurrentDay(new Date().getDay());
+    }, []);
+
     return (
         <>
             <DivFoot>
@@ -24,43 +30,43 @@ const DaysOfCoffe = () => {
                         <TextFoot>Dia do Café</TextFoot>
                         <Coffe src={cafe} />
                     </DivTitleCafe>
-                    <DivSeg>
+                    <DivDay style={currentDay === 1 ? { borderTop: '2px solid #B73625' } : {}}>
                         <DayWeek>seg</DayWeek>
                         <NameWeek>
                             <Names>Caio</Names>
                             <Names>Gabriel</Names>
                         </NameWeek>
-                    </DivSeg>
+                    </DivDay>
                 </AlignDiv>
-                <DivTer>
+                <DivDay style={currentDay === 2 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>ter</DayWeek>
                     <NameWeek>
                         <Names>Bruna</Names>
                         <Names>Leo</Names>
                     </NameWeek>
-                </DivTer>
-                <DivQua>
+                </DivDay>
+                <DivDay style={currentDay === 3 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>qua</DayWeek>
                     <NameWeek>
                         <Names>Osmar</Names>
                         <Names>Caio</Names>
                     </NameWeek>
-                </DivQua>
-                <DivQui>
+                </DivDay>
+                <DivDay style={currentDay === 4 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>qui</DayWeek>
                     <NameWeek>
                         <Names>Wasch</Names>
                         <Names>Nic</Names>
                     </NameWeek>
-                </DivQui>
-                <DivSex>
+                </DivDay>
+                <DivDay style={currentDay === 5 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>sex</DayWeek>
                     <NameWeek>
                         <Names>Cláudia</Names>
                         <Names>Pedro K.</Names>
                     </NameWeek>
-                </DivSex>
-            </DivFoot>
+                </DivDay>
+            </DivFoot >
         </>
     )
 }
