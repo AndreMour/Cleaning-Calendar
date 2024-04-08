@@ -2,14 +2,14 @@ import {
   Title, DivInput, TextLabel, Input,
   ButtonInput, DivList, TextUl, ButtonList,
   DivNames, ListNames, DivNamesList,
+  StyledToastContainer,
 } from "./styles";
 import { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { darkTheme, lightTheme } from "../Themes/Themes";
 
 const DrawGrid = ({ setFridayGroups, theme }) => {
   const [users, setUsers] = useState([]);
@@ -39,12 +39,18 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
   }, [setUsers, users]);
 
   const handleAddParticipant = async (name) => {
-    try {
-      const res = await axios.post("http://localhost:8080/add", { name });
-      setUsers([...users, res.data]);
-      toast.success("Usuário adicionado com sucesso.");
-    } catch (error) {
-      toast.error(error);
+    if (!name.trim()) {
+      toast.error("Insira o nome do funcionário.");
+      return;
+    } else {
+      try {
+        const res = await axios.post("http://localhost:8080/add", { name });
+        setUsers([...users, res.data]);
+        toast.success("Usuário adicionado com sucesso.");
+        setNames('');
+      } catch (error) {
+        toast.error(error);
+      }
     }
   };
 
@@ -79,7 +85,7 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
 
   return (
     <>
-      <ToastContainer autoClose={3000} theme={theme === "dark" ? "dark" : "light"} position="bottom-left" />
+      <StyledToastContainer autoClose={3000} position="bottom-right" />
       <Title>Calendário de Limpeza</Title>
       <DivInput>
         <TextLabel>Insira o nome</TextLabel>

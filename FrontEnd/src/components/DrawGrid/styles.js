@@ -1,5 +1,18 @@
-import styled from "styled-components";
+import { ToastContainer } from 'react-toastify';
+import styled from 'styled-components';
+import { darkTheme } from '../Themes/Themes';
 
+export const StyledToastContainer = styled(ToastContainer).attrs({
+})`
+  .Toastify__toast--error {
+    background: ${props => props.theme === darkTheme ? '#333' : '#fff'};
+    color: ${props => props.theme === darkTheme ? '#fff' : '#333'};
+  }
+  .Toastify__toast--success {
+    background: ${props => props.theme === darkTheme ? '#333' : '#fff'};
+    color: ${props => props.theme === darkTheme ? '#fff' : '#333'};
+  }
+`;
 export const Title = styled.h2`
     display: flex;
     justify-content: center;
