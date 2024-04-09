@@ -47,6 +47,7 @@ export const DaysOfTheMonth = styled.div`
 export const Day = styled.div`
   position: relative;
   width: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -71,10 +72,11 @@ export const DayContent = styled.div`
   position: absolute;
   display: flex;
   bottom: -10px;
-  margin-left: 10px; 
+  justify-content: center;
+  align-items: center;
 `
 export const DivGroup = styled.div`
-  margin-right: 170px;
+  margin-right: 130px;
 `
 export const ParticipantsContainer = styled.div`
   display: flex;

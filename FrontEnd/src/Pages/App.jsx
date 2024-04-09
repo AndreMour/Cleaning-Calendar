@@ -8,7 +8,6 @@ import Calendar from '../components/Calendar';
 import { ThemeProvider } from 'styled-components';
 import DrawGrid from '../components/DrawGrid/DrawGrid';
 import DaysOfCoffe from '../components/DaysOfCoffe/DaysOfCoffe';
-import DrawGride from '../components/DrawGrid/DrawGride';
 
 function App() {
     const [fridayGroups, setFridayGroups] = useState([]);
@@ -34,7 +33,7 @@ function App() {
             <Container>
                 <NavigationContainer>
                     <Switch toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
-                    <DrawGride setFridayGroups={setFridayGroups} fridayGroups={fridayGroups} />
+                    <DrawGrid setFridayGroups={setFridayGroups} fridayGroups={fridayGroups} />
                 </NavigationContainer>
                 <CalendarContainer>
                     <Calendar fridayGroups={fridayGroups} />
