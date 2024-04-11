@@ -5,7 +5,7 @@ import {
 } from './styles';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-export default function Calendar({ fridayGroups }) {
+export default function Calendar({ fridayGroups, isLoading }) {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
@@ -57,16 +57,28 @@ export default function Calendar({ fridayGroups }) {
     const isFriday = allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month);
     const fridayIndex = allFridays.findIndex(friday => friday.getDate() === d && friday.getMonth() === month);
 
-    if (isFriday && fridayIndex >= 0) {
+    if (isLoading) {
+      return null;
+    }
+
+    else if (isFriday && fridayIndex >= 0) {
       const currentGroups = fridayGroups[fridayIndex];
 
       if (currentGroups && currentGroups.length > 0) {
+        console.log('nice to meet u', currentGroups)
         return displayGroup(currentGroups);
       }
     }
 
     return null;
   }
+
+  useEffect(() => {
+    if (fridayGroups.length != 0) {
+      console.log('fridayGroups no Calendar: ', fridayGroups)
+      displayFriday();
+    }
+  }, [fridayGroups]);
 
   const displayGroup = (currentGroups) => {
 

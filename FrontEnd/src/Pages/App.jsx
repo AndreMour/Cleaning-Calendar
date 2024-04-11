@@ -11,6 +11,7 @@ import DaysOfCoffe from '../components/DaysOfCoffe/DaysOfCoffe';
 
 function App() {
     const [fridayGroups, setFridayGroups] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [theme, setTheme] = useState("dark");
     const isDarkTheme = theme === "dark";
@@ -33,10 +34,10 @@ function App() {
             <Container>
                 <NavigationContainer>
                     <Switch toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
-                    <DrawGrid setFridayGroups={setFridayGroups} fridayGroups={fridayGroups} />
+                    <DrawGrid setFridayGroups={setFridayGroups} fridayGroups={fridayGroups} setIsLoading={setIsLoading} />
                 </NavigationContainer>
                 <CalendarContainer>
-                    <Calendar fridayGroups={fridayGroups} />
+                    <Calendar fridayGroups={fridayGroups} isLoading={isLoading} />
                     <DaysOfCoffe />
                 </CalendarContainer>
             </Container>

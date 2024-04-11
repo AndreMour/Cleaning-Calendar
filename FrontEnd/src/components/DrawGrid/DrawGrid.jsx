@@ -11,10 +11,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-const DrawGrid = ({ setFridayGroups, theme }) => {
+const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
+  const date = new Date();
+  const today = new Date();
   const [users, setUsers] = useState([]);
   const [names, setNames] = useState("");
   const [onEdit, setOnEdit] = useState(null);
+  const [currentDate, setCurrentDate] = useState(date);
+  const [allFridays, setAllFridays] = useState([]);
 
   const handleChange = (e) => setNames(e.target.value);
 
@@ -25,6 +29,28 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
     }
   };
 
+  function getAllFridays(year, startMonth = 0, endMonth = 11) {
+    const fridays = [];
+    const currentMonth = today.getMonth();
+    const currentDay = today.getDate();
+
+    for (let month = startMonth; month <= endMonth; month++) {
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+
+        if (date.getDay() === 5) {
+          if (month < currentMonth || (month === currentMonth && day < currentDay)) {
+            continue;
+          }
+          fridays.push(date);
+        }
+      }
+    }
+    return fridays;
+  };
+
   const getUsers = async () => {
     try {
       const res = await axios.get("http://localhost:8080");
@@ -32,11 +58,7 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
     } catch (error) {
       toast.error(error);
     }
-  }
-
-  useEffect(() => {
-    getUsers();
-  }, [setUsers, users]);
+  };
 
   const handleAddParticipant = async (name) => {
     if (!name.trim()) {
@@ -66,7 +88,21 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
       .catch(({ data }) => toast.error(data));
 
     setOnEdit(null);
-  }
+  };
+
+  const handleSaveTeams = async (teams) => {
+    const teamsWithDate = teams.map((team, index) => {
+      const date = allFridays[index];
+      return [...team, date];
+    });
+
+    try {
+      const res = await axios.post("http://localhost:8080/saveTeams", { teams: teamsWithDate });
+      toast.success("Duplas salvas com sucesso.");
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
   const sortParticipantsIntoTeams = () => {
     const shuffledParticipants = [...users].sort(() => Math.random() - 0.5);
@@ -80,12 +116,39 @@ const DrawGrid = ({ setFridayGroups, theme }) => {
       }
     }
 
+    handleSaveTeams(teams);
+
     return teams;
   };
 
+  const getFridayGroups = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get("http://localhost:8080/getTeams");
+      setFridayGroups(res.data);
+      console.log('CHAMEI')
+      console.log('res: ', res.data)
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    setAllFridays(getAllFridays(currentDate.getFullYear(), 0, 11));
+  }, [currentDate]);
+
+  useEffect(() => {
+    getUsers();
+  }, [setUsers, users]);
+
+  useEffect(() => {
+    getFridayGroups();
+  }, []);
+
   return (
     <>
-      <StyledToastContainer autoClose={3000} position="bottom-right" />
+      <StyledToastContainer autoClose={2000} position="bottom-right" />
       <Title>Calendário de Limpeza</Title>
       <DivInput>
         <TextLabel>Insira o nome</TextLabel>
