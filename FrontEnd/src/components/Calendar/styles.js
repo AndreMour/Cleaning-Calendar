@@ -76,13 +76,14 @@ export const DayContent = styled.div`
   align-items: center;
 `
 export const DivGroup = styled.div`
-  margin-right: 130px;
+  margin-right: 160px;
+  margin-left: auto;
 `
 export const ParticipantsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  margin: 0 50px 27px 0;
+  margin: 0 40px 27px 0;
 `
 export const Participants = styled.span`
   font-family: 'Roboto', sans-serif;
