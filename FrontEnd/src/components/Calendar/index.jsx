@@ -58,14 +58,13 @@ export default function Calendar({ fridayGroups, isLoading }) {
     const fridayIndex = allFridays.findIndex(friday => friday.getDate() === d && friday.getMonth() === month);
 
     if (isLoading) {
-      return null;
+      return null
     }
 
-    else if (isFriday && fridayIndex >= 0) {
+    if (isFriday && fridayIndex >= 0) {
       const currentGroups = fridayGroups[fridayIndex];
 
-      if (currentGroups && currentGroups.length > 0) {
-        console.log('nice to meet u', currentGroups)
+      if (currentGroups && (currentGroups).length > 0) {
         return displayGroup(currentGroups);
       }
     }
@@ -73,27 +72,22 @@ export default function Calendar({ fridayGroups, isLoading }) {
     return null;
   }
 
-  useEffect(() => {
-    if (fridayGroups.length != 0) {
-      console.log('fridayGroups no Calendar: ', fridayGroups)
-      displayFriday();
-    }
+  useEffect((d, month) => {
+    displayFriday(d, month);
   }, [fridayGroups]);
 
   const displayGroup = (currentGroups) => {
-
     return (
       <DivGroup>
         {
-          currentGroups && (
-            <DayContent>
+          currentGroups && currentGroups.map((group, index) => (
+            <DayContent key={index}>
               <ParticipantsContainer>
-                {currentGroups.map((participant, idx) => (
-                  <Participants key={idx}>{participant}</Participants>
-                ))}
+                <Participants>{group.funcionario1}</Participants>
+                <Participants>{group.funcionario2}</Participants>
               </ParticipantsContainer>
             </DayContent>
-          )
+          ))
         }
       </DivGroup>
     )

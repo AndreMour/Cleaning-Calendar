@@ -34,7 +34,7 @@ function App() {
             <Container>
                 <NavigationContainer>
                     <Switch toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
-                    <DrawGrid setFridayGroups={setFridayGroups} fridayGroups={fridayGroups} setIsLoading={setIsLoading} />
+                    <DrawGrid setFridayGroups={setFridayGroups} setIsLoading={setIsLoading} />
                 </NavigationContainer>
                 <CalendarContainer>
                     <Calendar fridayGroups={fridayGroups} isLoading={isLoading} />

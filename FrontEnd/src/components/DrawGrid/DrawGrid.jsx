@@ -122,12 +122,20 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
   };
 
   const getFridayGroups = async () => {
-    setIsLoading(true);
     try {
       const res = await axios.get("http://localhost:8080/getTeams");
-      setFridayGroups(res.data);
-      console.log('CHAMEI')
-      console.log('res: ', res.data)
+      const data = res.data.reduce((acc, item, index) => {
+        const dayIndex = Math.floor(index / 1);
+        if (!acc[dayIndex]) {
+          acc[dayIndex] = [];
+        }
+        acc[dayIndex].push({
+          funcionario1: item.funcionario1,
+          funcionario2: item.funcionario2
+        });
+        return acc;
+      }, []);
+      setFridayGroups(data);
     } catch (error) {
       console.error(error);
     }
