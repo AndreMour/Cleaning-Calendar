@@ -5,7 +5,7 @@ import {
     Names, DivTitleCafe, TextFoot,
     AlignDiv, DivDay
 } from "./styles";
-import cafe from '../../assets/cafe.png';
+import cafe from '../../assets/Images/cafe.png';
 
 const Coffe = styled.img.attrs((props) => ({
     src: props.src,

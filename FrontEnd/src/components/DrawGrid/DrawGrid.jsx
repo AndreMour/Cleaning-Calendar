@@ -20,15 +20,6 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
   const [currentDate, setCurrentDate] = useState(date);
   const [allFridays, setAllFridays] = useState([]);
 
-  const handleChange = (e) => setNames(e.target.value);
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleAddParticipant(names);
-      setNames("");
-    }
-  };
-
   function getAllFridays(year, startMonth = 0, endMonth = 11) {
     const fridays = [];
     const currentMonth = today.getMonth();
@@ -49,6 +40,15 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
       }
     }
     return fridays;
+  };
+
+  const handleChange = (e) => setNames(e.target.value);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAddParticipant(names);
+      setNames("");
+    }
   };
 
   const getUsers = async () => {

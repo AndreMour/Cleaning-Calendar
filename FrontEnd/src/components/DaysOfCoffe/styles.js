@@ -16,8 +16,6 @@ export const DivFoot = styled.div`
     margin-top: 100px;
 `
 export const AlignDiv = styled.div`
-    display: grid;
-    align-items: center;
     margin: -83px -47px 0 0;
 `
 export const DivDay = styled.div`

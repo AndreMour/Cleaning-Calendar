@@ -20,7 +20,6 @@ export const Header = styled.nav`
 `
 export const DaysOfTheWeek = styled.div`
   display: flex;
-  flex-direction: row;
   width: 100%;
   height: 8vh;
 `

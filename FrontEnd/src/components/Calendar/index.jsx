@@ -72,10 +72,6 @@ export default function Calendar({ fridayGroups, isLoading }) {
     return null;
   }
 
-  useEffect((d) => {
-    displayFriday(d, month);
-  }, [fridayGroups]);
-
   const displayGroup = (currentGroups) => {
     return (
       <DivGroup>

@@ -16,7 +16,6 @@ export const StyledToastContainer = styled(ToastContainer).attrs({
 export const Title = styled.h2`
     display: flex;
     justify-content: center;
-    align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: 600;
@@ -47,16 +46,14 @@ export const Input = styled.input`
     background-color: ${(props) => props.theme.colorInput};
 `
 export const ButtonInput = styled.button`
-    display: flex;
     justify-content: center;
-    align-items:center;
     margin: 25px auto;
     border: none;
     color: white;
     width: 120px;
     height: 33px;
     border-radius: 5px;
-    background: #B73625;
+    background-color: #B73625;
     font-family:'Roboto', sans-serif;
     font-size: 16px;
     &:hover {
@@ -82,15 +79,12 @@ export const TextUl = styled.ul`
     color: ${(props) => props.theme.text};
 `
 export const ButtonList = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 85px;
     height: 26px;
     border-radius: 5px;
     border: none;
     margin-left: 20px;
-    background: #B73625;
+    background-color: #B73625;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
