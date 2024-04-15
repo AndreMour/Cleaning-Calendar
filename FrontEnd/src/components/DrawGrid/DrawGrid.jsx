@@ -104,7 +104,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
     }
   };
 
-  const sortParticipantsIntoTeams = () => {
+  const sortParticipantsIntoTeams = async () => {
     const shuffledParticipants = [...users].sort(() => Math.random() - 0.5);
     const teams = [];
 
@@ -116,7 +116,8 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
       }
     }
 
-    handleSaveTeams(teams);
+    await handleSaveTeams(teams);
+    getFridayGroups();
 
     return teams;
   };
@@ -169,13 +170,15 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
       </DivList>
       <DivNames>
         {users.map((user) => (
-          <ListNames key={user.id}>
-            <DivNamesList>
-              <BsDot size={40} />
-              {user.nome}
-            </DivNamesList>
-            <IoCloseSharp onClick={() => handleDelete(user.id)} size={20} />
-          </ListNames>
+          user.nome && (
+            <ListNames key={user.id}>
+              <DivNamesList>
+                <BsDot size={40} />
+                {user.nome}
+              </DivNamesList>
+              <IoCloseSharp onClick={() => handleDelete(user.id)} size={20} />
+            </ListNames>
+          )
         ))}
       </DivNames>
     </>

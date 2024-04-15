@@ -72,7 +72,7 @@ export default function Calendar({ fridayGroups, isLoading }) {
     return null;
   }
 
-  useEffect((d, month) => {
+  useEffect((d) => {
     displayFriday(d, month);
   }, [fridayGroups]);
 
