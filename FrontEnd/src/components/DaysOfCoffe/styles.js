@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FaRegEdit } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 
 export const DivTitleCafe = styled.div`
     display: flex;
@@ -16,7 +18,25 @@ export const DivFoot = styled.div`
     margin-top: 100px;
 `
 export const AlignDiv = styled.div`
-    margin: -83px -47px 0 0;
+    margin-top: -83px;
+`
+export const AlignEdit = styled.div`
+    margin-top: 20px;
+`
+export const EditDiv = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20px;
+`
+export const EditIcon = styled(FaRegEdit)`
+    font-size: 18px;
+    color: #A3A3A3;
+    margin-top: -40px;
+`
+export const CheckIcon = styled(FaCheck)`
+    font-size: 18px;
+    color: green;
+    margin-top: -40px;
 `
 export const DivDay = styled.div`
     width: 174px;
@@ -24,6 +44,7 @@ export const DivDay = styled.div`
     box-shadow: 0px 4px 4px 0px #00000040;
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bodyWeek};
+    overflow: hidden;
 `
 export const DayWeek = styled.div`
     font-family: 'Montserrat', sans-serif;
@@ -34,14 +55,24 @@ export const DayWeek = styled.div`
     justify-content: center;
     color: ${(props) => props.theme.text};
 `
+export const TextInput = styled.input`
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    max-width: 50px;
+    padding-top: 16px;
+    background-color: ${(props) => props.theme.bodyWeek};
+    color: ${(props) => props.theme.text};
+    border: none;
+`
 export const NameWeek = styled.div`
+    display: flex;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
-    padding-top: 10px;
-    color: ${(props) => props.theme.text};
+    margin-top: 10px;
 `
 export const Names = styled.p`  
 `
