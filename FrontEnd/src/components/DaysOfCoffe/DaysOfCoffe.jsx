@@ -20,7 +20,20 @@ const DaysOfCoffe = () => {
 
     useEffect(() => {
         setCurrentDay(new Date().getDay());
-    }, []);
+
+        const handleKeyPress = (e) => {
+            if (e.key === 'Enter' && editMode) {
+                setEditMode(false);
+            }
+        };
+
+        document.addEventListener('keypress', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keypress', handleKeyPress);
+        };
+    }, [editMode]);
+
 
     return (
         <>
@@ -42,7 +55,6 @@ const DaysOfCoffe = () => {
                                         value={names.seg.name2}
                                         onChange={(e) => setNames({ ...names, seg: { ...names.seg, name2: e.target.value } })}
                                     />
-
                                 </>
                             ) : (
                                 <>
