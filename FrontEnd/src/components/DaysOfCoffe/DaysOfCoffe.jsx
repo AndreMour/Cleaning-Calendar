@@ -58,10 +58,8 @@ const DaysOfCoffe = () => {
                                 </>
                             ) : (
                                 <>
-
-                                    <Names >{names.seg.name1}</Names>
-                                    <Names >{names.seg.name2}</Names>
-
+                                    <Names>{names.seg.name1}</Names>
+                                    <Names>{names.seg.name2}</Names>
                                 </>
                             )}
                         </NameWeek>
@@ -69,9 +67,9 @@ const DaysOfCoffe = () => {
                 </AlignDiv>
                 <DivDay style={currentDay === 2 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>ter</DayWeek>
-                    {editMode ? (
-                        <>
-                            <NameWeek>
+                    <NameWeek>
+                        {editMode ? (
+                            <>
                                 <TextInput
                                     value={names.ter.name1}
                                     onChange={(e) => setNames({ ...names, ter: { ...names.ter, name1: e.target.value } })}
@@ -80,22 +78,20 @@ const DaysOfCoffe = () => {
                                     value={names.ter.name2}
                                     onChange={(e) => setNames({ ...names, ter: { ...names.ter, name2: e.target.value } })}
                                 />
-                            </NameWeek>
-                        </>
-                    ) : (
-                        <>
-                            <NameWeek>
-                                <Names >{names.ter.name1}</Names>
-                                <Names >{names.ter.name2}</Names>
-                            </NameWeek>
-                        </>
-                    )}
+                            </>
+                        ) : (
+                            <>
+                                <Names>{names.ter.name1}</Names>
+                                <Names>{names.ter.name2}</Names>
+                            </>
+                        )}
+                    </NameWeek>
                 </DivDay>
                 <DivDay style={currentDay === 3 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>qua</DayWeek>
-                    {editMode ? (
-                        <>
-                            <NameWeek>
+                    <NameWeek>
+                        {editMode ? (
+                            <>
                                 <TextInput
                                     value={names.qua.name1}
                                     onChange={(e) => setNames({ ...names, qua: { ...names.qua, name1: e.target.value } })}
@@ -104,22 +100,20 @@ const DaysOfCoffe = () => {
                                     value={names.qua.name2}
                                     onChange={(e) => setNames({ ...names, qua: { ...names.qua, name2: e.target.value } })}
                                 />
-                            </NameWeek>
-                        </>
-                    ) : (
-                        <>
-                            <NameWeek>
-                                <Names >{names.qua.name1}</Names>
-                                <Names >{names.qua.name2}</Names>
-                            </NameWeek>
-                        </>
-                    )}
+                            </>
+                        ) : (
+                            <>
+                                <Names>{names.qua.name1}</Names>
+                                <Names>{names.qua.name2}</Names>
+                            </>
+                        )}
+                    </NameWeek>
                 </DivDay>
                 <DivDay style={currentDay === 4 ? { borderTop: '2px solid #B73625' } : {}}>
                     <DayWeek>qui</DayWeek>
-                    {editMode ? (
-                        <>
-                            <NameWeek>
+                    <NameWeek>
+                        {editMode ? (
+                            <>
                                 <TextInput
                                     value={names.qui.name1}
                                     onChange={(e) => setNames({ ...names, qui: { ...names.qui, name1: e.target.value } })}
@@ -128,16 +122,14 @@ const DaysOfCoffe = () => {
                                     value={names.qui.name2}
                                     onChange={(e) => setNames({ ...names, qui: { ...names.qui, name2: e.target.value } })}
                                 />
-                            </NameWeek>
-                        </>
-                    ) : (
-                        <>
-                            <NameWeek>
-                                <Names >{names.qui.name1}</Names>
-                                <Names >{names.qui.name2}</Names>
-                            </NameWeek>
-                        </>
-                    )}
+                            </>
+                        ) : (
+                            <>
+                                <Names>{names.qui.name1}</Names>
+                                <Names>{names.qui.name2}</Names>
+                            </>
+                        )}
+                    </NameWeek>
                 </DivDay>
                 <AlignEdit>
                     <EditDiv>
@@ -146,9 +138,9 @@ const DaysOfCoffe = () => {
                     </EditDiv>
                     <DivDay style={currentDay === 5 ? { borderTop: '2px solid #B73625' } : {}}>
                         <DayWeek>sex</DayWeek>
-                        {editMode ? (
-                            <>
-                                <NameWeek>
+                        <NameWeek>
+                            {editMode ? (
+                                <>
                                     <TextInput
                                         value={names.sex.name1}
                                         onChange={(e) => setNames({ ...names, sex: { ...names.sex, name1: e.target.value } })}
@@ -157,16 +149,14 @@ const DaysOfCoffe = () => {
                                         value={names.sex.name2}
                                         onChange={(e) => setNames({ ...names, sex: { ...names.sex, name2: e.target.value } })}
                                     />
-                                </NameWeek>
-                            </>
-                        ) : (
-                            <>
-                                <NameWeek>
-                                    <Names >{names.sex.name1}</Names>
-                                    <Names >{names.sex.name2}</Names>
-                                </NameWeek>
-                            </>
-                        )}
+                                </>
+                            ) : (
+                                <>
+                                    <Names>{names.sex.name1}</Names>
+                                    <Names>{names.sex.name2}</Names>
+                                </>
+                            )}
+                        </NameWeek>
                     </DivDay>
                 </AlignEdit>
             </DivFoot >
