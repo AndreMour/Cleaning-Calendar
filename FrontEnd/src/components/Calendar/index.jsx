@@ -54,8 +54,8 @@ export default function Calendar({ fridayGroups, isLoading }) {
   }
 
   const displayFriday = (d, month) => {
-    const isFriday = allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month);
-    const fridayIndex = allFridays.findIndex(friday => friday.getDate() === d && friday.getMonth() === month);
+    const isFriday = allFridays.some(friday => friday.getDate() === d && friday.getMonth() === month && friday.getFullYear() === new Date().getFullYear());
+    const fridayIndex = allFridays.findIndex(friday => friday.getDate() === d && friday.getMonth() === month && friday.getFullYear() === new Date().getFullYear());
 
     if (isLoading) {
       return null
