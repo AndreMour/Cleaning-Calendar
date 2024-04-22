@@ -53,7 +53,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8080");
+      const res = await axios.get("http://192.168.18.133:8080");
       setUsers(res.data)
     } catch (error) {
       toast.error(error);
@@ -66,7 +66,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
       return;
     } else {
       try {
-        const res = await axios.post("http://localhost:8080/add", { name });
+        const res = await axios.post("http://192.168.18.133:8080/add", { name });
         setUsers([...users, res.data]);
         toast.success("Usuário adicionado com sucesso.");
         setNames('');
@@ -78,7 +78,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete("http://localhost:8080/" + id)
+      .delete("http://192.168.18.133:8080/" + id)
       .then(({ data }) => {
         const newArray = users.filter((user) => user.id !== id);
 
@@ -97,7 +97,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
     });
 
     try {
-      const res = await axios.post("http://localhost:8080/saveTeams", { teams: teamsWithDate });
+      const res = await axios.post("http://192.168.18.133:8080/saveTeams", { teams: teamsWithDate });
       toast.success("Duplas salvas com sucesso.");
     } catch (error) {
       toast.error(error);
@@ -124,7 +124,7 @@ const DrawGrid = ({ setFridayGroups, setIsLoading }) => {
 
   const getFridayGroups = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/getTeams");
+      const res = await axios.get("http://192.168.18.133:8080/getTeams");
       const data = res.data.reduce((acc, item, index) => {
         const dayIndex = Math.floor(index / 1);
         if (!acc[dayIndex]) {
