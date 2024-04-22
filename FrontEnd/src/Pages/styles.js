@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const NavigationContainer = styled.div`
     height: 100%;
     width: 30%;
-    overflow-y: auto;
     background-color: ${(props) => props.theme.body};
 `
 export const CalendarContainer = styled.div`

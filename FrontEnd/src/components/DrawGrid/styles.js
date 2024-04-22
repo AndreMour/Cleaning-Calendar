@@ -102,6 +102,10 @@ export const ButtonList = styled.button`
 export const DivNames = styled.div`
     margin-top: 15px;
     color: ${(props) => props.theme.text};
+    height: 50%;
+    overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #B73625 transparent; 
 `
 export const ListNames = styled.div`
     display: flex;
